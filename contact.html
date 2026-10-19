@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <title>Contact SULAL | Islamabad & Rawalpindi Car Rental</title>
+    <meta
+      name="description"
+      content="Contact SULAL about car rental in Islamabad and Rawalpindi, including driver and self-drive options, subject to availability."
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="images/branding/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <script defer src="js/config.js"></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="SULAL Entrepreneur UK home"
+          ><span class="brand-mark">S</span
+          ><span class="brand-copy"
+            ><strong>SULAL</strong><small>ENTREPRENEUR UK</small></span
+          ></a
+        >
+        <nav
+          class="nav-links"
+          id="primary-navigation"
+          aria-label="Main navigation"
+        >
+          <a href="index.html">Home</a><a href="cars.html">Cars</a
+          ><a href="properties.html">Properties</a
+          ><a href="construction.html">Construction</a
+          ><a href="about.html">About</a><a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn--gold btn--small" href="booking.html"
+            >Book a Car ↗</a
+          ><button
+            class="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow">We’re here to help</span>
+          <h1>Let’s start a conversation.</h1>
+          <p>
+            Send an inquiry about a rental car or property. The form prepares a
+            message in WhatsApp for you to review and send.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div
+          class="container"
+          style="
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            gap: 30px;
+            align-items: start;
+          "
+        >
+          <div>
+            <div class="form-card">
+              <span class="eyebrow">Direct contact</span>
+              <h2>Reach SULAL</h2>
+              <p class="muted">
+                Update your contact details in <code>js/config.js</code> before
+                publishing.
+              </p>
+              <div style="display: grid; gap: 12px; margin-top: 22px">
+                <button class="btn btn--outline" data-whatsapp>
+                  WhatsApp inquiry
+                  <span
+                    ><img
+                      class="whatsapp-Logo"
+                      src="/images/whatsapp.logo.png"
+                      alt="whatsapp"
+                  /></span></button
+                ><button class="btn btn--outline" data-call>
+                  Call our team ↗
+                </button>
+              </div>
+            </div>
+          </div>
+          <form id="contact-form" class="form-card">
+            <div class="form-grid">
+              <div class="field">
+                <label for="contact-name">Full name *</label
+                ><input
+                  id="contact-name"
+                  name="name"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="field">
+                <label for="contact-email">Email *</label
+                ><input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="field">
+                <label for="contact-phone">Phone (optional)</label
+                ><input id="contact-phone" name="phone" type="tel" />
+              </div>
+              <div class="field">
+                <label for="subject">Inquiry type *</label
+                ><select id="subject" name="subject" required>
+                  <option value="">Choose one</option>
+                  <option>Car rental</option>
+                  <option>Property sale</option>
+                  <option>Property rent</option>
+                  <option>General inquiry</option>
+                </select>
+              </div>
+              <div class="field field--full">
+                <label for="message">Your message *</label
+                ><textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <div class="field field--full">
+                <button class="btn btn--gold" type="submit">
+                  Prepare WhatsApp message
+                  <span
+                    ><img
+                      class="whatsapp-Logo"
+                      src="/images/whatsapp.logo.png"
+                      alt="whatsapp"
+                  /></span>
+                </button>
+              </div>
+            </div>
+            <p class="muted" style="font-size: 0.82rem">
+              This static website does not send email or store form submissions.
+              The form opens WhatsApp for you to send the message manually.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a class="brand" href="index.html"
+              ><span class="brand-mark">S</span
+              ><span class="brand-copy"
+                ><strong>SULAL</strong><small>ENTREPRENEUR UK</small></span
+              ></a
+            >
+            <p>
+              Premium car rental and property inquiries, with service built
+              around comfort, clarity, and trust.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <a href="cars.html">Rental Cars</a
+            ><a href="properties.html">Properties</a
+            ><a href="construction.html">Construction</a
+            ><a href="about.html">About SULAL</a>
+          </div>
+          <div class="footer-col">
+            <h4>Get in touch</h4>
+            <a href="contact.html">Contact us</a
+            ><a href="booking.html">Car booking inquiry</a
+            ><a href="privacy.html">Privacy policy</a>
+          </div>
+          <div class="footer-col">
+            <h4>Direct inquiry</h4>
+            <a href="javascript:void(0)" data-whatsapp>WhatsApp us</a
+            ><a href="javascript:void(0)" data-call>Call our team</a>
+            <p>Availability is confirmed manually.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span
+            >© <span data-year></span> SULAL Entrepreneur UK. All rights
+            reserved.</span
+          ><span>Premium journeys. Property possibilities.</span>
+        </div>
+      </div>
+    </footer>
+    <script defer src="js/contact.js"></script>
+  </body>
+</html>

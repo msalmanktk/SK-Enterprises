@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <title>Car Rental Booking in Islamabad & Rawalpindi | SULAL</title>
+    <meta
+      name="description"
+      content="Send SULAL a car rental inquiry for Islamabad or Rawalpindi. Ask about dates, pickup location, driver or self-drive options, and availability."
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="images/branding/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
+    <script defer src="js/config.js"></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="SULAL Entrepreneur UK home"
+          ><span class="brand-mark">S</span
+          ><span class="brand-copy"
+            ><strong>SULAL</strong><small>ENTREPRENEUR UK</small></span
+          ></a
+        >
+        <nav
+          class="nav-links"
+          id="primary-navigation"
+          aria-label="Main navigation"
+        >
+          <a href="index.html">Home</a><a href="cars.html">Cars</a
+          ><a href="properties.html">Properties</a
+          ><a href="construction.html">Construction</a
+          ><a href="about.html">About</a><a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn--gold btn--small" href="booking.html"
+            >Book a Car ↗</a
+          ><button
+            class="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow">Your journey starts here</span>
+          <h1>Car booking inquiry</h1>
+          <p>
+            Share your preferred dates and details. We will open WhatsApp with
+            your inquiry ready to send.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container" style="max-width: 850px">
+          <form id="booking-form" class="form-card">
+            <div class="form-grid">
+              <div class="field field--full">
+                <label for="car">Preferred car *</label
+                ><select id="car" name="car" required>
+                  <option value="">Select a car</option>
+                  <option value="CAR001 — Executive Sedan">
+                    Executive Sedan
+                  </option>
+                  <option value="CAR002 — Luxury Performance Coupe">
+                    Luxury Performance Coupe
+                  </option>
+                  <option value="CAR003 — Premium SUV">Premium SUV</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="name">Your full name *</label
+                ><input
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="field">
+                <label for="phone">Your phone number *</label
+                ><input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                  placeholder="+92..."
+                />
+              </div>
+              <div class="field">
+                <label for="pickupDate">Pickup date *</label
+                ><input
+                  id="pickupDate"
+                  name="pickupDate"
+                  type="date"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="returnDate">Return date *</label
+                ><input
+                  id="returnDate"
+                  name="returnDate"
+                  type="date"
+                  required
+                />
+              </div>
+              <div class="field field--full">
+                <label for="location">Pickup location *</label
+                ><input
+                  id="location"
+                  name="location"
+                  required
+                  placeholder="City or pickup point"
+                />
+              </div>
+              <div class="field field--full">
+                <label for="notes">Additional details (optional)</label
+                ><textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Any preferences or questions?"
+                ></textarea>
+              </div>
+              <div class="field field--full">
+                <button class="btn btn--gold" type="submit">
+                  Continue on WhatsApp
+                  <span
+                    ><img
+                      class="whatsapp-Logo"
+                      src="/images/whatsapp.logo.png"
+                      alt="Whatsapp"
+                  /></span>
+                </button>
+              </div>
+            </div>
+            <p class="notice" style="margin-top: 18px">
+              Submitting this form does not confirm a reservation. WhatsApp will
+              open with your details; press Send there, then wait for SULAL to
+              confirm availability, price, and terms.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a class="brand" href="index.html"
+              ><span class="brand-mark">S</span
+              ><span class="brand-copy"
+                ><strong>SULAL</strong><small>ENTREPRENEUR UK</small></span
+              ></a
+            >
+            <p>
+              Premium car rental and property inquiries, with service built
+              around comfort, clarity, and trust.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <a href="cars.html">Rental Cars</a
+            ><a href="properties.html">Properties</a
+            ><a href="construction.html">Construction</a
+            ><a href="about.html">About SULAL</a>
+          </div>
+          <div class="footer-col">
+            <h4>Get in touch</h4>
+            <a href="contact.html">Contact us</a
+            ><a href="booking.html">Car booking inquiry</a
+            ><a href="privacy.html">Privacy policy</a>
+          </div>
+          <div class="footer-col">
+            <h4>Direct inquiry</h4>
+            <a href="javascript:void(0)" data-whatsapp>WhatsApp us</a
+            ><a href="javascript:void(0)" data-call>Call our team</a>
+            <p>Availability is confirmed manually.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span
+            >© <span data-year></span> SULAL Entrepreneur UK. All rights
+            reserved.</span
+          ><span>Premium journeys. Property possibilities.</span>
+        </div>
+      </div>
+    </footer>
+    <script defer src="js/booking.js"></script>
+  </body>
+</html>
