@@ -1,0 +1,578 @@
+/* ==========================================================================
+   SULAL — responsive.css
+   Is file ko components.css aur style.css ke BAAD load karein:
+
+   <link rel="stylesheet" href="components.css">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="responsive.css">
+
+   Breakpoints:
+   1200px  large laptop / small desktop
+   1024px  iPad landscape / small laptop
+    900px  iPad portrait / tablet  (mobile menu yahan se start)
+    768px  large phone / small tablet
+    600px  phone
+    400px  extra small phone
+   ========================================================================== */
+
+/* ---------- Global safety (har screen par) ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+  min-width: 320px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+.card__image img,
+.details-image img {
+  height: 100%;
+}
+.details-image img {
+  height: auto;
+}
+table {
+  max-width: 100%;
+}
+
+/* Notch wale phones ke liye */
+.site-header,
+.site-footer {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+.toast {
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+/* Touch devices: hover animations band, tap targets bade */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover,
+  .btn--gold:hover {
+    transform: none;
+  }
+  .card:hover .card__image img {
+    transform: none;
+  }
+  .btn,
+  .menu-toggle,
+  .nav-links a {
+    min-height: 44px;
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  .filter-control {
+    font-size: 16px; /* iOS zoom on focus rokta hai */
+  }
+}
+
+/* ---------- ≤1200px : large laptop ---------- */
+@media (max-width: 1200px) {
+  .container {
+    width: min(1120px, calc(100% - 48px));
+  }
+  .footer-grid {
+    gap: 28px;
+  }
+}
+
+/* ---------- ≤1024px : iPad landscape ---------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-grid {
+    gap: 32px;
+  }
+  .about-visual {
+    min-height: 340px;
+  }
+
+  .details-layout {
+    gap: 22px;
+  }
+
+  .navbar {
+    gap: 16px;
+  }
+  .nav-links {
+    gap: 14px;
+    font-size: 0.85rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+  .footer-about p {
+    max-width: 520px;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- ≤900px : iPad portrait / tablet + MOBILE MENU ---------- */
+@media (max-width: 900px) {
+  /* Mobile menu (hamburger) */
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .navbar {
+    min-height: 64px;
+    position: relative;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 20px;
+    background: #0b0b0b;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - 64px);
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    font-size: 1rem;
+  }
+  .nav-links.is-open {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .nav-links a:last-child {
+    border-bottom: 0;
+  }
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  /* Sections */
+  .section {
+    padding: 48px 0;
+  }
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .section-heading p {
+    max-width: 100%;
+  }
+
+  /* About / details / CTA */
+  .about-grid,
+  .details-layout {
+    grid-template-columns: 1fr;
+  }
+  .about-visual {
+    min-height: 300px;
+  }
+  .cta-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .cta-panel p {
+    max-width: 100%;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .filter-bar > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Service strip */
+  .service-strip__inner {
+    grid-template-columns: 1fr;
+  }
+  .service-point {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .service-point:last-child {
+    border-bottom: 0;
+  }
+
+  /* Old hero */
+  .hero {
+    min-height: 480px;
+  }
+  .hero-content {
+    padding: 56px 0 64px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- ≤768px : large phone ---------- */
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .form-card {
+    padding: 18px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding: 40px 0 26px;
+  }
+  .page-hero p {
+    max-width: 100%;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials,
+  .faq {
+    padding: 36px 0;
+  }
+
+  .details-panel {
+    padding: 16px;
+  }
+  .details-image {
+    border-radius: 16px;
+  }
+
+  .legal-copy {
+    max-width: 100%;
+  }
+  /* input added */
+  input {
+    width: 50px;
+    height: 40px;
+  }
+}
+
+/* ---------- ≤600px : phone ---------- */
+@media (max-width: 600px) {
+  .section {
+    padding: 38px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Buttons: hero / card par full-width friendly */
+  .hero-buttons,
+  .card__actions {
+    gap: 8px;
+  }
+  .hero-buttons .btn {
+    flex: 1 1 calc(50% - 8px);
+  }
+  .card__actions .btn {
+    flex: 1 1 auto;
+  }
+
+  /* Brand chhota */
+  .brand {
+    gap: 9px;
+    letter-spacing: 0.08em;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+  }
+  .brand-copy strong {
+    font-size: 0.9rem;
+  }
+  .brand-copy small {
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
+  }
+  .nav-actions .btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 420px;
+  }
+  .hero h1 {
+    letter-spacing: -0.04em;
+    margin: 16px 0;
+  }
+  .hero-note {
+    gap: 16px 22px;
+    margin-top: 22px;
+  }
+
+  /* Slider: dots ke liye neeche jagah */
+  .sulal-slide {
+    padding: 28px 46px 52px;
+  }
+  .sulal-slide__content .hero-kicker {
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+  }
+  .sulal-slide__content p {
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .sulal-slider__dots {
+    bottom: 14px;
+  }
+
+  /* About */
+  .about-visual {
+    min-height: 240px;
+    border-radius: 18px;
+  }
+  .about-copy h2 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem);
+  }
+
+  /* CTA */
+  .cta-panel {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+  .cta-panel h2 {
+    font-size: clamp(1.3rem, 6vw, 1.7rem);
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  /* Details */
+  .details-panel h1 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* FAQ */
+  .faq-item summary {
+    font-size: 14px;
+  }
+
+  .empty-state {
+    padding: 32px 16px;
+  }
+  /* inputs */
+  input {
+    width: 50px;
+    height: 25px;
+  }
+  .btn {
+    /* width: 200px; */
+    height: 25px;
+    font-size: 10px;
+  }
+}
+
+/* ---------- ≤400px : extra small phone ---------- */
+@media (max-width: 400px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .nav-actions .btn {
+    display: none; /* sirf hamburger dikhe; chahein to hata dein */
+  }
+
+  .hero-buttons .btn {
+    flex: 1 1 100%;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card__body {
+    padding: 13px;
+  }
+  .card__topline {
+    flex-wrap: wrap;
+  }
+
+  .sulal-slider {
+    height: 440px;
+  }
+  .sulal-slide {
+    padding: 24px 40px 48px;
+  }
+}
+
+/* ---------- Landscape phones (kam height) ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .sulal-slider {
+    height: 360px;
+  }
+  .sulal-slide {
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+  .sulal-slide__content h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin: 8px 0;
+  }
+  .sulal-slide__content p {
+    margin-bottom: 12px;
+  }
+  .hero {
+    min-height: 0;
+  }
+  .nav-links {
+    max-height: calc(100vh - 64px);
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .site-header,
+  .sulal-slider__arrow,
+  .sulal-slider__dots,
+  .menu-toggle,
+  .toast {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+@media (max-width: 760px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials,
+  .faq {
+    padding: 36px 0;
+  }
+
+  .testimonial-card {
+    padding: 18px;
+  }
+}
+.whatsapp-Logo {
+  width: 25px;
+  border-radius: 50%;
+}
+@media (max-width: 600px) {
+  .sulal-slider {
+    height: 410px;
+  }
+  /* uncomment  */
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+  .hidden {
+    display: none;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    padding: 18px 22px 24px;
+    background: #0b0b0b;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-links.is-open {
+    display: flex;
+  }
+  /* uncomeent */
+  .sulal-slide {
+    padding: 28px 42px;
+    background-position: center;
+  }
+  .sulal-slide__content h1 {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+  .sulal-slide__content p {
+    font-size: 0.9rem;
+  }
+  .sulal-slider__prev {
+    left: 7px;
+  }
+  .sulal-slider__next {
+    right: 7px;
+  }
+  .sulal-slider__arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sulal-slide {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}

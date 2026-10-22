@@ -539,65 +539,15 @@
   border-radius: 8px;
   background: #e6b84b;
 }
-@media (max-width: 600px) {
-  .sulal-slider {
-    height: 410px;
-  }
-  /* uncomment  */
-  .menu-toggle {
-    display: grid;
-    place-items: center;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: calc(100% + 1px);
-    left: 0;
-    right: 0;
-    padding: 18px 22px 24px;
-    background: #0b0b0b;
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-  .nav-links.is-open {
-    display: flex;
-  }
-  /* uncomeent */
-  .sulal-slide {
-    padding: 28px 42px;
-    background-position: center;
-  }
-  .sulal-slide__content h1 {
-    font-size: clamp(2rem, 9vw, 2.7rem);
-  }
-  .sulal-slide__content p {
-    font-size: 0.9rem;
-  }
-  .sulal-slider__prev {
-    left: 7px;
-  }
-  .sulal-slider__next {
-    right: 7px;
-  }
-  .sulal-slider__arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 1.4rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sulal-slide {
-    transition: opacity 0.2s ease;
-    transform: none;
-  }
-}
+
 /* cuetomer experience and faq */
 /* Customer feedback and FAQ */
 .testimonials,
 .faq {
   padding: 48px 0;
+}
+.faq {
+  background: #151515;
 }
 
 .section-headingFAQ {
@@ -694,23 +644,4 @@
   font-size: 14px;
   line-height: 1.7;
   margin: 12px 0 2px;
-}
-
-@media (max-width: 760px) {
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials,
-  .faq {
-    padding: 36px 0;
-  }
-
-  .testimonial-card {
-    padding: 18px;
-  }
-}
-.whatsapp-Logo {
-  width: 25px;
-  border-radius: 50%;
 }

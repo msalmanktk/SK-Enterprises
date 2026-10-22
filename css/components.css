@@ -327,3 +327,6 @@ button,
 .form-grid {
   gap: 14px;
 }
+.hidden {
+  display: block;
+}
