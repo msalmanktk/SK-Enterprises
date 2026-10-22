@@ -1,10 +1,10 @@
-# SULAL Entrepreneur UK — Website Starter
+# SK Enterprises — Website Starter
 
 Premium black-and-gold static website for car rental and property inquiries. Built with HTML, CSS, and vanilla JavaScript.
 
 ## Run locally
 1. Extract this folder.
-2. Open `sulal-website` in VS Code.
+2. Open `sk-enterprises-website` in VS Code.
 3. Install/use the VS Code **Live Server** extension, then right-click `index.html` and choose **Open with Live Server**. You can also open `index.html` directly, but a local server is better for testing.
 
 ## Before publishing
@@ -48,4 +48,4 @@ The project now includes `construction.html` and a project inquiry form that pre
 
 
 ### Homepage hero slider
-The homepage now has a 3-slide automatic hero slider for car rental, construction, and real estate. Temporary Unsplash image URLs are used in `index.html` for now. Replace these with your own optimized `.webp` files later by updating the `--slide-image` URLs in the three `.sulal-slide` elements. Slider changes every 5 seconds and includes arrow/dot controls.
+The homepage now has a 3-slide automatic hero slider for car rental, construction, and real estate. Temporary Unsplash image URLs are used in `index.html` for now. Replace these with your own optimized `.webp` files later by updating the `--slide-image` URLs in the three `.sk-enterprises-slide` elements. Slider changes every 5 seconds and includes arrow/dot controls.

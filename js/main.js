@@ -25,7 +25,7 @@
 
   document.querySelectorAll("[data-call]").forEach((el) => {
     el.addEventListener("click", () => {
-      const phone = window.SULAL_CONFIG?.phoneNumber || "";
+      const phone = window.SK_ENTERPRISES_CONFIG?.phoneNumber || "";
       if (!phone || phone.includes("*")) {
         alert("Please add your real phone number in js/config.js first.");
         return;
@@ -36,14 +36,14 @@
 
   document.querySelectorAll("[data-whatsapp]").forEach((el) => {
     el.addEventListener("click", () => {
-      const number = window.SULAL_CONFIG?.whatsappNumber || "";
+      const number = window.SK_ENTERPRISES_CONFIG?.whatsappNumber || "";
       if (!number || number.includes("*")) {
         alert("Please add your real WhatsApp number in js/config.js first.");
         return;
       }
       const message =
         el.dataset.message ||
-        "Hello SULAL Entrepreneur UK, I would like to make an inquiry.";
+        "Hello SK Enterprises, I would like to make an inquiry.";
       window.open(
         `https://wa.me/${number.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`,
         "_blank",
@@ -53,7 +53,7 @@
   });
 })();
 
-window.SULAL = {
+window.SK_ENTERPRISES = {
   escapeHTML(value) {
     return String(value ?? "").replace(
       /[&<>"']/g,
@@ -114,13 +114,13 @@ window.SULAL = {
   },
   async loadListings(type) {
     const key = type === "cars" ? "carsCsvUrl" : "propertiesCsvUrl";
-    const url = window.SULAL_CONFIG?.[key];
+    const url = window.SK_ENTERPRISES_CONFIG?.[key];
     if (!url) return null;
     const response = await fetch(url, { cache: "no-store" });
     if (!response.ok)
       throw new Error("Could not load published Google Sheets data.");
     const text = await response.text();
-    return window.SULAL.csvToObjects(text).filter(
+    return window.SK_ENTERPRISES.csvToObjects(text).filter(
       (item) => (item.status || "").toLowerCase() === "active",
     );
   },
@@ -135,12 +135,12 @@ window.SULAL = {
 
 // Homepage hero slider: auto-advance, arrows, dots, and pause on hover/focus.
 document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.querySelector("#sulalSlider");
+  const slider = document.querySelector("#skEnterprisesSlider");
   if (!slider) return;
-  const slides = [...slider.querySelectorAll(".sulal-slide")];
-  const dots = [...slider.querySelectorAll(".sulal-slider__dots button")];
-  const prev = slider.querySelector(".sulal-slider__prev");
-  const next = slider.querySelector(".sulal-slider__next");
+  const slides = [...slider.querySelectorAll(".sk-enterprises-slide")];
+  const dots = [...slider.querySelectorAll(".sk-enterprises-slider__dots button")];
+  const prev = slider.querySelector(".sk-enterprises-slider__prev");
+  const next = slider.querySelector(".sk-enterprises-slider__next");
   if (!slides.length) return;
   let current = 0;
   let timer = null;

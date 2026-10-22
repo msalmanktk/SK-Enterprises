@@ -1,4 +1,4 @@
-/* SULAL main design system — premium black and gold */
+/* SK_ENTERPRISES main design system — premium black and gold */
 :root {
   color-scheme: dark;
 }
@@ -421,8 +421,8 @@
   padding: 12px;
 }
 
-/* SULAL automatic luxury hero slider */
-.sulal-slider {
+/* SK_ENTERPRISES automatic luxury hero slider */
+.sk-enterprises-slider {
   position: relative;
   height: clamp(360px, 42vw, 520px);
   overflow: hidden;
@@ -430,7 +430,7 @@
   background: #080808;
   color: #fff;
 }
-.sulal-slide {
+.sk-enterprises-slide {
   position: absolute;
   inset: 0;
   display: flex;
@@ -454,41 +454,41 @@
     transform 5.5s ease,
     visibility 0.75s ease;
 }
-.sulal-slide.is-active {
+.sk-enterprises-slide.is-active {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
   z-index: 1;
 }
-.sulal-slide__content {
+.sk-enterprises-slide__content {
   max-width: 570px;
   position: relative;
   z-index: 2;
 }
-.sulal-slide__content .hero-kicker {
+.sk-enterprises-slide__content .hero-kicker {
   color: #e6b84b;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   font-weight: 700;
 }
-.sulal-slide__content h1 {
+.sk-enterprises-slide__content h1 {
   font-size: clamp(2.15rem, 4.6vw, 4.2rem);
   line-height: 1.04;
   letter-spacing: -0.035em;
   margin: 14px 0;
 }
-.sulal-slide__content h1 em {
+.sk-enterprises-slide__content h1 em {
   color: #e6b84b;
   font-style: normal;
 }
-.sulal-slide__content p {
+.sk-enterprises-slide__content p {
   max-width: 480px;
   color: #e4e4e4;
   font-size: clamp(0.9rem, 1.3vw, 1.05rem);
   line-height: 1.7;
   margin: 0 0 24px;
 }
-.sulal-slider__arrow {
+.sk-enterprises-slider__arrow {
   position: absolute;
   top: 50%;
   z-index: 4;
@@ -503,17 +503,17 @@
   line-height: 1;
   cursor: pointer;
 }
-.sulal-slider__prev {
+.sk-enterprises-slider__prev {
   left: 20px;
 }
-.sulal-slider__next {
+.sk-enterprises-slider__next {
   right: 20px;
 }
-.sulal-slider__arrow:hover {
+.sk-enterprises-slider__arrow:hover {
   color: #111;
   background: #e6b84b;
 }
-.sulal-slider__dots {
+.sk-enterprises-slider__dots {
   position: absolute;
   z-index: 4;
   bottom: 20px;
@@ -522,7 +522,7 @@
   display: flex;
   gap: 9px;
 }
-.sulal-slider__dots button {
+.sk-enterprises-slider__dots button {
   width: 8px;
   height: 8px;
   padding: 0;
@@ -534,7 +534,7 @@
     width 0.2s ease,
     background 0.2s ease;
 }
-.sulal-slider__dots button.is-active {
+.sk-enterprises-slider__dots button.is-active {
   width: 24px;
   border-radius: 8px;
   background: #e6b84b;

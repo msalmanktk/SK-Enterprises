@@ -5,13 +5,13 @@
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form).entries());
-    const number = window.SULAL_CONFIG?.whatsappNumber || "";
+    const number = window.SK_ENTERPRISES_CONFIG?.whatsappNumber || "";
     if (!number || number.includes("*")) {
       alert("Please add your real WhatsApp number in js/config.js first.");
       return;
     }
     const message = [
-      "SULAL Entrepreneur UK — Construction Project Inquiry",
+      "SK Enterprises — Construction Project Inquiry",
       `Name: ${data.name}`,
       `Phone: ${data.phone}`,
       `Project type: ${data.projectType}`,

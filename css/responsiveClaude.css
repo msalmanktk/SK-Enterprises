@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SULAL — responsive.css
+   SK_ENTERPRISES — responsive.css
    Is file ko components.css aur style.css ke BAAD load karein:
 
    <link rel="stylesheet" href="components.css">
@@ -350,18 +350,18 @@ table {
   }
 
   /* Slider: dots ke liye neeche jagah */
-  .sulal-slide {
+  .sk-enterprises-slide {
     padding: 28px 46px 52px;
   }
-  .sulal-slide__content .hero-kicker {
+  .sk-enterprises-slide__content .hero-kicker {
     font-size: 0.64rem;
     letter-spacing: 0.14em;
   }
-  .sulal-slide__content p {
+  .sk-enterprises-slide__content p {
     line-height: 1.55;
     margin-bottom: 18px;
   }
-  .sulal-slider__dots {
+  .sk-enterprises-slider__dots {
     bottom: 14px;
   }
 
@@ -454,28 +454,28 @@ table {
     flex-wrap: wrap;
   }
 
-  .sulal-slider {
+  .sk-enterprises-slider {
     height: 440px;
   }
-  .sulal-slide {
+  .sk-enterprises-slide {
     padding: 24px 40px 48px;
   }
 }
 
 /* ---------- Landscape phones (kam height) ---------- */
 @media (max-height: 500px) and (orientation: landscape) {
-  .sulal-slider {
+  .sk-enterprises-slider {
     height: 360px;
   }
-  .sulal-slide {
+  .sk-enterprises-slide {
     padding-top: 16px;
     padding-bottom: 40px;
   }
-  .sulal-slide__content h1 {
+  .sk-enterprises-slide__content h1 {
     font-size: clamp(1.5rem, 5vw, 2rem);
     margin: 8px 0;
   }
-  .sulal-slide__content p {
+  .sk-enterprises-slide__content p {
     margin-bottom: 12px;
   }
   .hero {
@@ -489,8 +489,8 @@ table {
 /* ---------- Print ---------- */
 @media print {
   .site-header,
-  .sulal-slider__arrow,
-  .sulal-slider__dots,
+  .sk-enterprises-slider__arrow,
+  .sk-enterprises-slider__dots,
   .menu-toggle,
   .toast {
     display: none !important;
@@ -520,7 +520,7 @@ table {
   border-radius: 50%;
 }
 @media (max-width: 600px) {
-  .sulal-slider {
+  .sk-enterprises-slider {
     height: 410px;
   }
   /* uncomment  */
@@ -548,30 +548,30 @@ table {
     display: flex;
   }
   /* uncomeent */
-  .sulal-slide {
+  .sk-enterprises-slide {
     padding: 28px 42px;
     background-position: center;
   }
-  .sulal-slide__content h1 {
+  .sk-enterprises-slide__content h1 {
     font-size: clamp(2rem, 9vw, 2.7rem);
   }
-  .sulal-slide__content p {
+  .sk-enterprises-slide__content p {
     font-size: 0.9rem;
   }
-  .sulal-slider__prev {
+  .sk-enterprises-slider__prev {
     left: 7px;
   }
-  .sulal-slider__next {
+  .sk-enterprises-slider__next {
     right: 7px;
   }
-  .sulal-slider__arrow {
+  .sk-enterprises-slider__arrow {
     width: 32px;
     height: 32px;
     font-size: 1.4rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sulal-slide {
+  .sk-enterprises-slide {
     transition: opacity 0.2s ease;
     transform: none;
   }

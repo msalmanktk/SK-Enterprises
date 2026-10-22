@@ -1,6 +1,6 @@
 /* Update these values with your real business details before publishing. */
-window.SULAL_CONFIG = {
-  businessName: "SULAL Entrepreneur UK",
+window.SK_ENTERPRISES_CONFIG = {
+  businessName: "SK Enterprises",
   whatsappNumber: "923159957806", // Replace * with your real digits; no +, spaces, or dashes.
   phoneNumber: "923159957806", // Replace with the callable number in international format.
   carsCsvUrl: "", // Paste the published Cars CSV URL from Google Sheets.

@@ -16,10 +16,10 @@
     if (!form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form).entries());
     if (data.returnDate < data.pickupDate) return alert("Return date must be the same as or after pickup date.");
-    const n = window.SULAL_CONFIG.whatsappNumber;
+    const n = window.SK_ENTERPRISES_CONFIG.whatsappNumber;
     if (!n || n.includes("*")) return alert("Please add your real WhatsApp number in js/config.js first.");
     const message = [
-      "SULAL Entrepreneur UK — Car Booking Inquiry",
+      "SK Enterprises — Car Booking Inquiry",
       `Car: ${data.car}`,
       `Name: ${data.name}`,
       `Phone: ${data.phone}`,
