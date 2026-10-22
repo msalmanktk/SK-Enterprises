@@ -1,0 +1,692 @@
+/* ==========================================================================
+   SK ENTERPRISES — responsive-pro.css  (v2)
+   --------------------------------------------------------------------------
+   Is file ko sab se LAST mein load karein (components.css, style.css ke baad)
+   aur purani responsiveClaude.css ki jagah lagayein:
+
+   <link rel="stylesheet" href="css/components.css" />
+   <link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/responsive-pro.css" />
+
+   FILE KA STRUCTURE (step by step):
+   STEP 1   Design tokens        -> fluid spacing / container (ek jagah se control)
+   STEP 2   Global safety        -> overflow, images, tap, focus, reduced-motion
+   STEP 3   Fluid typography     -> headings screen ke saath khud scale hon
+   STEP 4   Intrinsic grids      -> cards / testimonials bina breakpoint ke adjust
+   STEP 5   Header + nav         -> desktop fit, hamburger, animated mobile menu
+   STEP 6   Hero slider          -> har screen par content fit
+   STEP 7   Sections             -> service strip, about, CTA, FAQ, filter bar
+   STEP 8   Forms + contact      -> inline-style wali 2-column grid ka fix
+   STEP 9   Details pages        -> car-details / property-details
+   STEP 10  Footer
+   STEP 11  Touch devices
+   STEP 12  Landscape phones + Print
+
+   BREAKPOINTS:
+   1100px  laptop chhota      | 1024px iPad landscape  (hamburger yahan se)
+    900px  iPad portrait      |  768px large phone
+    600px  phone              |  420px / 360px extra small
+   ========================================================================== */
+
+/* ==========================================================================
+   STEP 1 — DESIGN TOKENS
+   Yahan ke numbers badal dein, poori site ki spacing ek sath badal jayegi.
+   clamp(min, ideal, max) = screen chhoti ho to min, badi ho to max.
+   ========================================================================== */
+:root {
+  --gutter: clamp(14px, 4vw, 24px); /* container ke left/right ka gap */
+  --section-y: clamp(36px, 7vw, 68px); /* har section ka upar/neeche gap */
+  --header-h: 72px; /* header ki height (mobile par 64px) */
+  --tap: 44px; /* touch target ka minimum size */
+  --focus: 0 0 0 3px rgba(214, 179, 106, 0.45);
+}
+
+/* ==========================================================================
+   STEP 2 — GLOBAL SAFETY
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%; /* iPhone landscape par font na barhe */
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(
+    var(--header-h) + 12px
+  ); /* sticky header ke neeche anchors na chhupein */
+}
+body {
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip; /* modern browsers: sticky header ko bhi break nahi karta */
+  min-width: 320px;
+  overflow-wrap: break-word;
+  -webkit-tap-highlight-color: rgba(214, 179, 106, 0.2);
+}
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+
+/* Container: ab gutter token se chalta hai */
+.container {
+  width: min(1120px, calc(100% - var(--gutter) * 2));
+}
+.section {
+  padding-block: var(--section-y);
+}
+
+/* Keyboard users ke liye saaf focus ring (accessibility) */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Jin ko animation se takleef hoti hai unke liye animation band */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .sk-enterprises-slide {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   STEP 3 — FLUID TYPOGRAPHY
+   Kuch headings aapki CSS mein bohat chhote ya fixed px mein hain; yahan
+   clamp() se un ko smooth banaya gaya hai.
+   ========================================================================== */
+.page-hero h1 {
+  font-size: clamp(1.75rem, 1rem + 4vw, 2.75rem);
+}
+.about-copy h2 {
+  font-size: clamp(1.85rem, 1rem + 4vw, 3.2rem);
+}
+.cta-panel h2 {
+  font-size: clamp(
+    1.45rem,
+    0.8rem + 3vw,
+    2.2rem
+  ); /* pehle 1rem tak chala jata tha */
+}
+.section-headingFAQ h2 {
+  font-size: clamp(1.6rem, 1rem + 3vw, 2.25rem); /* pehle fixed 36px */
+}
+.details-panel h1 {
+  font-size: clamp(1.6rem, 1rem + 3vw, 2.8rem);
+}
+.eyebrow {
+  font-size: clamp(0.8rem, 0.7rem + 0.5vw, 1.1rem);
+}
+
+/* ==========================================================================
+   STEP 4 — INTRINSIC GRIDS (breakpoints ki zaroorat nahi)
+   auto-fill + minmax = jitne cards fit hon utne columns, baqi neeche.
+   Result: desktop 3, iPad 2, phone 1 — khud ba khud.
+   ========================================================================== */
+.grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+}
+.testimonial-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.card__topline {
+  flex-wrap: wrap; /* lamba price + pill ek line mein na phansein */
+}
+.card h3,
+.price {
+  overflow-wrap: anywhere;
+}
+.card__actions .btn {
+  flex: 1 1 auto; /* buttons jagah ke hisab se failein */
+}
+
+/* ==========================================================================
+   STEP 5 — HEADER + NAVIGATION
+   ========================================================================== */
+
+/* 5a. Chhoti laptop (1025–1100px): desktop nav fit karwane ke liye thora chhota */
+@media (max-width: 1100px) {
+  .navbar {
+    gap: 16px;
+  }
+  .nav-links {
+    gap: 14px;
+    font-size: 1.15rem;
+  }
+  .brand-copy strong {
+    font-size: 1.3rem;
+  }
+  .brand-copy small {
+    font-size: 0.75rem;
+  }
+}
+
+/* "Book a Car" button: .hidden class (display:block) ko theek karta hai */
+.nav-actions .btn {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+/* 5b. iPad aur us se chhota: hamburger menu */
+@media (max-width: 1024px) {
+  :root {
+    --header-h: 64px;
+  }
+  .navbar {
+    min-height: var(--header-h);
+    /* NOTE: .navbar ko relative nahi banaya, taake dropdown poori width le */
+  }
+  .nav-actions {
+    margin-left: auto;
+  }
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Dropdown menu — hidden hota hai, .is-open lagne par smooth khulta hai */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px var(--gutter) 18px;
+    font-size: 1.1rem;
+    background: rgba(11, 11, 11, 0.98);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      visibility 0.22s;
+  }
+  .nav-links.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    padding: 15px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .nav-links a:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* 5c. Phone: brand aur button chhote taake ek line mein fit hon */
+@media (max-width: 600px) {
+  .navbar {
+    gap: 10px;
+  }
+  .brand {
+    gap: 8px;
+    letter-spacing: 0.06em;
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .brand-copy strong {
+    font-size: 1.15rem;
+  }
+  .brand-copy small {
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    margin-top: 3px;
+  }
+  .nav-actions {
+    gap: 8px;
+  }
+  .nav-actions .btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  /* .hidden {
+    display: none;
+  } */
+  .nav-actions .btn {
+    display: none;
+  }
+}
+
+/* 5d. Bohat chhoti screen (≤360px): sirf hamburger */
+@media (max-width: 360px) {
+  .nav-actions .btn {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   STEP 6 — HERO SLIDER  (.sk-enterprises-slider)
+   ========================================================================== */
+.sk-enterprises-slider {
+  touch-action: pan-y; /* upar-neeche scroll chale, left-right swipe JS ke liye free */
+}
+
+@media (max-width: 1024px) {
+  .sk-enterprises-slider {
+    height: clamp(380px, 56vw, 480px);
+  }
+}
+
+@media (max-width: 600px) {
+  .sk-enterprises-slider {
+    height: 470px;
+  }
+  .sk-enterprises-slide {
+    padding: 28px 46px 56px; /* neeche dots ke liye jagah, dono taraf arrows ke liye */
+  }
+  .sk-enterprises-slide__content .hero-kicker {
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+  }
+  .sk-enterprises-slide__content h1 {
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+    margin: 12px 0;
+  }
+  .sk-enterprises-slide__content p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .sk-enterprises-slider__arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+  }
+  .sk-enterprises-slider__prev {
+    left: 7px;
+  }
+  .sk-enterprises-slider__next {
+    right: 7px;
+  }
+  .sk-enterprises-slider__dots {
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sk-enterprises-slider {
+    height: 510px;
+  }
+  .sk-enterprises-slide {
+    padding-inline: 40px;
+  }
+}
+
+/* Purana .hero (agar kisi page par use ho) */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 460px;
+  }
+  .hero-content {
+    padding: 52px 0 60px;
+  }
+}
+@media (max-width: 600px) {
+  .hero h1 {
+    letter-spacing: -0.04em;
+  }
+  .hero-note {
+    gap: 14px 22px;
+  }
+}
+.hero-buttons .btn {
+  flex: 0 1 auto;
+}
+@media (max-width: 480px) {
+  .hero-buttons .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* ==========================================================================
+   STEP 7 — SECTIONS
+   ========================================================================== */
+
+/* 7a. Section heading: tablet par upar-neeche */
+@media (max-width: 768px) {
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .section-heading p {
+    max-width: 100%;
+  }
+  .page-hero {
+    padding: 40px 0 26px;
+  }
+  .page-hero p {
+    max-width: 100%;
+  }
+}
+
+/* 7b. Service strip (Car Rental / Real Estate / Assistance) */
+.service-point > div {
+  min-width: 0;
+}
+.service-icon {
+  flex-shrink: 0;
+}
+@media (max-width: 1100px) {
+  .service-point {
+    padding: 16px 14px;
+  }
+  .service-point strong {
+    font-size: 1.2rem;
+  }
+  .service-point span {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 900px) {
+  .service-strip__inner {
+    grid-template-columns: 1fr;
+  }
+  .service-point {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .service-point:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* 7c. About (image + text) */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .about-visual {
+    min-height: clamp(240px, 50vw, 340px);
+    border-radius: 18px;
+  }
+}
+
+/* 7d. CTA panel */
+@media (max-width: 900px) {
+  .cta-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 26px 22px;
+  }
+  .cta-panel p {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .cta-panel {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+  .cta-panel > div {
+    width: 100%;
+  }
+  .cta-panel .btn {
+    width: 100%; /* dono buttons poori width */
+  }
+}
+
+/* WhatsApp icon (button ke andar) */
+.whatsapp-Logo {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 7e. Testimonials + FAQ */
+@media (max-width: 768px) {
+  .testimonials,
+  .faq {
+    padding: 36px 0;
+  }
+  .testimonial-card p {
+    line-height: 1.6; /* pehle 1.2 tha, padhne mein tang */
+  }
+  .faq-item summary {
+    padding-block: 2px;
+  }
+}
+.faq-item summary {
+  min-height: 32px;
+}
+
+/* 7f. Filter bar (cars / properties) */
+@media (max-width: 900px) {
+  .filter-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .filter-bar > :first-child,
+  .filter-bar > .muted {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  .filter-bar {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}
+
+/* ==========================================================================
+   STEP 8 — FORMS + CONTACT PAGE
+   ========================================================================== */
+.field input,
+.field select,
+.field textarea {
+  min-width: 0; /* grid ke andar input bahar nahi nikalta */
+  max-width: 100%;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+/* iPhone par date input ki alag shakal / overflow theek */
+.field input[type="date"],
+.field input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 46px;
+}
+
+@media (max-width: 680px) {
+  .form-card {
+    padding: 18px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .form-card .btn {
+    width: 100%;
+  }
+}
+
+/* Contact page: HTML mein inline style se 2-column grid laga hai
+   (grid-template-columns: 0.75fr 1.25fr). Inline style ko sirf !important
+   hara sakta hai, is liye yahan use kiya gaya hai. */
+@media (max-width: 900px) {
+  .container[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+}
+
+/* ==========================================================================
+   STEP 9 — DETAILS PAGES (car-details / property-details)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .details-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .details-image {
+    border-radius: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .details-panel {
+    padding: 16px;
+  }
+  .details-panel .card__actions .btn {
+    flex: 1 1 100%; /* Book / WhatsApp / Call: har button poori width */
+  }
+}
+@media (max-width: 380px) {
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   STEP 10 — FOOTER
+   ========================================================================== */
+.site-footer {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+}
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 22px 18px;
+  }
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+  .footer-about p {
+    max-width: 520px;
+  }
+}
+@media (max-width: 600px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+@media (max-width: 420px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Toast (notification) phone par screen ke andar rahe */
+.toast {
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  max-width: calc(100% - 28px);
+  text-align: center;
+}
+
+/* ==========================================================================
+   STEP 11 — TOUCH DEVICES (phone / iPad)
+   Hover sirf mouse par hota hai, touch par "chipak" jata hai — isko band
+   karte hain, aur buttons ko ungli ke size ka banate hain.
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover,
+  .btn--gold:hover,
+  .testimonial-card:hover {
+    transform: none;
+  }
+  .card:hover .card__image img {
+    transform: none;
+  }
+  .testimonial-card:hover {
+    background-color: #111; /* hover ka gold background touch par na rahe */
+  }
+  .btn,
+  .menu-toggle,
+  .filter-control {
+    min-height: var(--tap);
+  }
+  .nav-links a {
+    min-height: var(--tap);
+    display: flex;
+    align-items: center;
+  }
+  /* 16px se chhota text ho to iPhone input par zoom kar deta hai */
+  .field input,
+  .field select,
+  .field textarea,
+  .filter-control {
+    font-size: 16px;
+  }
+}
+
+/* ==========================================================================
+   STEP 12 — LANDSCAPE PHONES + PRINT
+   ========================================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .sk-enterprises-slider {
+    height: max(300px, calc(100vh - var(--header-h)));
+    height: max(300px, calc(100svh - var(--header-h)));
+  }
+  .sk-enterprises-slide {
+    padding-block: 14px 40px;
+  }
+  .sk-enterprises-slide__content h1 {
+    font-size: clamp(1.4rem, 4.5vw, 2rem);
+    margin: 6px 0;
+  }
+  .sk-enterprises-slide__content p {
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+  .hero {
+    min-height: 0;
+  }
+}
+
+@media print {
+  .site-header,
+  .sk-enterprises-slider__arrow,
+  .sk-enterprises-slider__dots,
+  .menu-toggle,
+  .toast {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
